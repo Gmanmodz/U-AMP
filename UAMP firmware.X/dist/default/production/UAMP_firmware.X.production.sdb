@@ -37,7 +37,7 @@
 [v _PIC_SETUP PIC_SETUP `(v  1 e 1 0 ]
 "40
 [v _ISR ISR `II(v  1 e 1 0 ]
-"70
+"75
 [v _main main `(v  1 e 1 0 ]
 "11 C:\Users\Gunnar\Desktop\U-AMP\UAMP firmware.X\PPS.c
 [v _PPS_unlock PPS_unlock `(v  1 e 1 0 ]
@@ -59,7 +59,7 @@
 [v _TRISA TRISA `VEuc  1 e 1 @18 ]
 "591
 [v _TRISC TRISC `VEuc  1 e 1 @20 ]
-[s S240 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S245 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -67,8 +67,8 @@
 `uc 1 TRISC5 1 0 :1:5 
 ]
 "606
-[u S247 . 1 `S240 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES247  1 e 1 @20 ]
+[u S252 . 1 `S245 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES252  1 e 1 @20 ]
 "1917
 [v _SSP1BUF SSP1BUF `VEuc  1 e 1 @396 ]
 "1937
@@ -79,7 +79,7 @@
 [v _SSP1CON1 SSP1CON1 `VEuc  1 e 1 @400 ]
 "2611
 [v _SSP1CON2 SSP1CON2 `VEuc  1 e 1 @401 ]
-[s S269 . 1 `uc 1 SEN 1 0 :1:0 
+[s S274 . 1 `uc 1 SEN 1 0 :1:0 
 `uc 1 RSEN 1 0 :1:1 
 `uc 1 PEN 1 0 :1:2 
 `uc 1 RCEN 1 0 :1:3 
@@ -89,17 +89,17 @@
 `uc 1 GCEN 1 0 :1:7 
 ]
 "2658
-[s S278 . 1 `uc 1 . 1 0 :1:0 
+[s S283 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ADMSK 1 0 :5:1 
 ]
-[s S281 . 1 `uc 1 . 1 0 :1:0 
+[s S286 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ADMSK1 1 0 :1:1 
 `uc 1 ADMSK2 1 0 :1:2 
 `uc 1 ADMSK3 1 0 :1:3 
 `uc 1 ADMSK4 1 0 :1:4 
 `uc 1 ADMSK5 1 0 :1:5 
 ]
-[s S288 . 1 `uc 1 SEN1 1 0 :1:0 
+[s S293 . 1 `uc 1 SEN1 1 0 :1:0 
 `uc 1 ADMSK11 1 0 :1:1 
 `uc 1 ADMSK21 1 0 :1:2 
 `uc 1 ADMSK31 1 0 :1:3 
@@ -108,15 +108,15 @@
 `uc 1 ACKSTAT1 1 0 :1:6 
 `uc 1 GCEN1 1 0 :1:7 
 ]
-[s S297 . 1 `uc 1 . 1 0 :1:0 
+[s S302 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 RSEN1 1 0 :1:1 
 `uc 1 PEN1 1 0 :1:2 
 `uc 1 RCEN1 1 0 :1:3 
 `uc 1 ADMSK41 1 0 :1:4 
 `uc 1 ADMSK51 1 0 :1:5 
 ]
-[u S304 . 1 `S269 1 . 1 0 `S278 1 . 1 0 `S281 1 . 1 0 `S288 1 . 1 0 `S297 1 . 1 0 ]
-[v _SSP1CON2bits SSP1CON2bits `VES304  1 e 1 @401 ]
+[u S309 . 1 `S274 1 . 1 0 `S283 1 . 1 0 `S286 1 . 1 0 `S293 1 . 1 0 `S302 1 . 1 0 ]
+[v _SSP1CON2bits SSP1CON2bits `VES309  1 e 1 @401 ]
 "2860
 [v _TMR1 TMR1 `VEus  1 e 2 @524 ]
 [s S28 . 1 `uc 1 ON 1 0 :1:0 
@@ -198,6 +198,8 @@
 [v _RC0 RC0 `VEb  1 e 0 @112 ]
 "21720
 [v _RC1 RC1 `VEb  1 e 0 @113 ]
+"21744
+[v _RC2 RC2 `VEb  1 e 0 @114 ]
 "21768
 [v _RC3 RC3 `VEb  1 e 0 @115 ]
 "21786
@@ -209,27 +211,35 @@
 "51
 [v _mute_state mute_state `uc  1 e 1 0 ]
 "53
-[v _volume volume `uc  1 e 1 0 ]
+[v _volume_sp volume_sp `uc  1 e 1 0 ]
 "54
-[v _volume_prev volume_prev `uc  1 e 1 0 ]
+[v _volume_sp_prev volume_sp_prev `uc  1 e 1 0 ]
 "56
-[v _vol_plus_time_start vol_plus_time_start `ul  1 e 4 0 ]
+[v _volume_hp volume_hp `uc  1 e 1 0 ]
 "57
-[v _vol_plus_time_hold vol_plus_time_hold `ul  1 e 4 0 ]
+[v _volume_hp_prev volume_hp_prev `uc  1 e 1 0 ]
+"58
+[v _HPS_time_start HPS_time_start `ul  1 e 4 0 ]
 "59
-[v _vol_minus_time_start vol_minus_time_start `ul  1 e 4 0 ]
-"60
-[v _vol_minus_time_hold vol_minus_time_hold `ul  1 e 4 0 ]
+[v _HPS_state HPS_state `uc  1 e 1 0 ]
+"61
+[v _vol_plus_time_start vol_plus_time_start `ul  1 e 4 0 ]
 "62
+[v _vol_plus_time_hold vol_plus_time_hold `ul  1 e 4 0 ]
+"64
+[v _vol_minus_time_start vol_minus_time_start `ul  1 e 4 0 ]
+"65
+[v _vol_minus_time_hold vol_minus_time_hold `ul  1 e 4 0 ]
+"67
 [v _vol_plus_state vol_plus_state `uc  1 e 1 0 ]
-"63
+"68
 [v _vol_minus_state vol_minus_state `uc  1 e 1 0 ]
 "11 C:\Users\Gunnar\Desktop\U-AMP\UAMP firmware.X\time.c
 [v _timer_counter timer_counter `ul  1 e 4 0 ]
-"70 C:\Users\Gunnar\Desktop\U-AMP\UAMP firmware.X\main.c
+"75 C:\Users\Gunnar\Desktop\U-AMP\UAMP firmware.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"205
+"258
 } 0
 "17 C:\Users\Gunnar\Desktop\U-AMP\UAMP firmware.X\time.c
 [v _timer_diff timer_diff `(ul  1 e 4 0 ]

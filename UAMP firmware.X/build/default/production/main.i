@@ -11162,8 +11162,13 @@ timer_counter++;
 uint8_t mute_config = 0;
 uint8_t mute_state = 0;
 
-uint8_t volume = 15;
-uint8_t volume_prev = 15;
+uint8_t volume_sp = 10;
+uint8_t volume_sp_prev = 10;
+
+uint8_t volume_hp = 10;
+uint8_t volume_hp_prev = 10;
+uint32_t HPS_time_start = 0;
+uint8_t HPS_state = 0;
 
 uint32_t vol_plus_time_start = 0;
 uint32_t vol_plus_time_hold = 0;
@@ -11174,7 +11179,7 @@ uint32_t vol_minus_time_hold = 0;
 uint8_t vol_plus_state = 0;
 uint8_t vol_minus_state = 0;
 
-# 70
+# 75
 void main(void) {
 
 PIC_SETUP();
@@ -11203,10 +11208,36 @@ mute_config = LM49450_DC_init();
 }
 
 
-LM49450_write(0x08, volume);
-LM49450_write(0x07, volume);
+LM49450_write(0x08, volume_sp);
+LM49450_write(0x07, volume_hp);
 
 while(1) {
+
+
+if(RC2) {
+if(HPS_state == 0) {
+HPS_time_start = get_time();
+HPS_state = 1;
+}
+else if(HPS_state == 1) {
+if(timer_diff(HPS_time_start) >= 4) {
+HPS_state = 2;
+if(volume_sp == 0 && mute_state == 0) {
+
+LM49450_write(0x00, mute_config);
+}
+}
+}
+}
+else {
+if(HPS_state == 2) {
+if(volume_hp == 0 && mute_state == 0) {
+
+LM49450_write(0x00, mute_config);
+}
+}
+HPS_state = 0;
+}
 
 if(!RA5) {
 switch(vol_plus_state) {
@@ -11220,14 +11251,20 @@ case 1:
 if(timer_diff(vol_plus_time_start) >= 4) {
 vol_plus_time_hold = get_time();
 vol_plus_state = 2;
-if((volume < 31) && mute_state == 0) volume++;
+if(HPS_state == 2) {
+if((volume_hp < 31) && mute_state == 0) volume_hp++;
+}
+else if((volume_sp < 31) && mute_state == 0) volume_sp++;
 }
 break;
 case 2:
 
 if(timer_diff(vol_plus_time_hold) >= 20) {
 vol_plus_time_hold = get_time();
-if((volume < 31) && mute_state == 0) volume++;
+if(HPS_state == 2) {
+if((volume_hp < 31) && mute_state == 0) volume_hp++;
+}
+else if((volume_sp < 31) && mute_state == 0) volume_sp++;
 }
 break;
 default:
@@ -11248,13 +11285,19 @@ case 1:
 if(timer_diff(vol_minus_time_start) >= 4) {
 vol_minus_time_hold = get_time();
 vol_minus_state = 2;
-if((volume > 0) && mute_state == 0) volume--;
+if(HPS_state == 2) {
+if((volume_hp > 0) && mute_state == 0) volume_hp--;
+}
+else if((volume_sp > 0) && mute_state == 0) volume_sp--;
 }
 break;
 case 2:
 if(timer_diff(vol_minus_time_hold) >= 20) {
 vol_minus_time_hold = get_time();
-if((volume > 0) && mute_state == 0) volume--;
+if(HPS_state == 2) {
+if((volume_hp > 0) && mute_state == 0) volume_hp--;
+}
+else if((volume_sp > 0) && mute_state == 0) volume_sp--;
 }
 break;
 default:
@@ -11296,18 +11339,28 @@ mute_state = 0;
 }
 }
 
-if((volume != volume_prev) && mute_state == 0) {
 
-if(volume == 0) {
+if((volume_sp != volume_sp_prev) && mute_state == 0) {
+LM49450_write(0x08, volume_sp);
+if(volume_sp == 0) {
 LM49450_write(0x00, (mute_config | 0b00000100));
 }
 else {
 LM49450_write(0x00, mute_config);
-LM49450_write(0x08, volume);
-LM49450_write(0x07, volume);
 }
 }
 
-volume_prev = volume;
+if((volume_hp != volume_hp_prev) && mute_state == 0) {
+LM49450_write(0x07, volume_hp);
+if(volume_hp == 0) {
+LM49450_write(0x00, (mute_config | 0b00000100));
+}
+else {
+LM49450_write(0x00, mute_config);
+}
+}
+
+volume_sp_prev = volume_sp;
+volume_hp_prev = volume_hp;
 }
 }

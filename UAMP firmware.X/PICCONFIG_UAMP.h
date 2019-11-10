@@ -55,6 +55,7 @@
 #define vol_minus   RA4
 #define dat0        RC4
 #define dat1        RC3
+#define HPS         RC2
 
 #include <xc.h> // include processor files - each processor file is guarded.  
 

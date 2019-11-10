@@ -50,8 +50,13 @@ void interrupt ISR(){
 uint8_t mute_config = 0;    //sets mute to 0 and saves default reg0 config
 uint8_t mute_state = 0;
 
-uint8_t volume = 15;    //volume to be sent to amp
-uint8_t volume_prev = 15;
+uint8_t volume_sp = 10;    //speaker volume to be sent to amp
+uint8_t volume_sp_prev = 10;
+
+uint8_t volume_hp = 10;    //headphone volume to be sent to amp
+uint8_t volume_hp_prev = 10;
+uint32_t HPS_time_start = 0;   //time when HPS is first signaled
+uint8_t HPS_state = 0;
 
 uint32_t vol_plus_time_start = 0;   //time when the button is first pressed
 uint32_t vol_plus_time_hold = 0;    //a timer to increment volume after button is pressed and held
@@ -95,10 +100,36 @@ void main(void) {
     }
     
     //set volume over i2c
-    LM49450_write(0x08, volume); //speaker volume
-    LM49450_write(0x07, volume); //headphone volume
+    LM49450_write(0x08, volume_sp); //speaker volume
+    LM49450_write(0x07, volume_hp); //headphone volume
     
     while(1) {
+        
+        //debouncing headphone sense
+        if(HPS) {
+            if(HPS_state == 0) {
+                HPS_time_start = get_time();
+                HPS_state = 1;
+            }
+            else if(HPS_state == 1) {
+                if(timer_diff(HPS_time_start) >= 4) {
+                    HPS_state = 2;
+                    if(volume_sp == 0 && mute_state == 0) {
+                        //if sp volume is 0, then amp has been muted. it should be unmuted if it is not in mute state
+                        LM49450_write(0x00, mute_config);   //un mute amp
+                    }
+                }
+            }
+        }
+        else {
+            if(HPS_state == 2) {
+                if(volume_hp == 0 && mute_state == 0) {
+                    //if hp volume is 0, then amp has been muted. it should be unmuted if it is not in mute state
+                    LM49450_write(0x00, mute_config);   //un mute amp  
+                }
+            }
+            HPS_state = 0;
+        }
         
         if(!vol_plus) {
             switch(vol_plus_state) {
@@ -112,14 +143,20 @@ void main(void) {
                     if(timer_diff(vol_plus_time_start) >= 4) {
                         vol_plus_time_hold = get_time();
                         vol_plus_state = 2;
-                        if((volume < 31) && mute_state == 0) volume++;
+                        if(HPS_state == 2) {
+                             if((volume_hp < 31) && mute_state == 0) volume_hp++;
+                        }
+                        else if((volume_sp < 31) && mute_state == 0) volume_sp++;
                     }                         
                 break; 
                 case 2:
                     //button is pressed, every X time, increment volume
                     if(timer_diff(vol_plus_time_hold) >= 20) {
                         vol_plus_time_hold = get_time();
-                        if((volume < 31) && mute_state == 0) volume++;
+                        if(HPS_state == 2) {
+                             if((volume_hp < 31) && mute_state == 0) volume_hp++;
+                        }
+                        else if((volume_sp < 31) && mute_state == 0) volume_sp++;
                     }
                 break;
                 default:
@@ -140,13 +177,19 @@ void main(void) {
                     if(timer_diff(vol_minus_time_start) >= 4) {
                         vol_minus_time_hold = get_time();
                         vol_minus_state = 2;
-                        if((volume > 0) && mute_state == 0) volume--;
+                        if(HPS_state == 2) {
+                             if((volume_hp > 0) && mute_state == 0) volume_hp--;
+                        }
+                        else if((volume_sp > 0) && mute_state == 0) volume_sp--;
                     }                         
                 break; 
                 case 2:
                     if(timer_diff(vol_minus_time_hold) >= 20) {
                         vol_minus_time_hold = get_time();
-                        if((volume > 0) && mute_state == 0) volume--;
+                        if(HPS_state == 2) {
+                             if((volume_hp > 0) && mute_state == 0) volume_hp--;
+                        }
+                        else if((volume_sp > 0) && mute_state == 0) volume_sp--;
                     }
                 break;
                 default:
@@ -188,18 +231,28 @@ void main(void) {
             }
         }
         
-        if((volume != volume_prev) && mute_state == 0) {     
-            //set volume over i2c
-            if(volume == 0) {
+        //setting the volume to the amp
+        if((volume_sp != volume_sp_prev) && mute_state == 0) {   
+            LM49450_write(0x08, volume_sp); //speaker volume
+            if(volume_sp == 0) {
                 LM49450_write(0x00, (mute_config | 0b00000100));    //mute amp
             }
             else {
                 LM49450_write(0x00, mute_config);   //un mute amp
-                LM49450_write(0x08, volume); //speaker volume
-                LM49450_write(0x07, volume); //headphone volume
             }
         }
         
-        volume_prev = volume;
+        if((volume_hp != volume_hp_prev) && mute_state == 0) {     
+            LM49450_write(0x07, volume_hp); //headphone volume
+            if(volume_hp == 0) {
+                LM49450_write(0x00, (mute_config | 0b00000100));    //mute amp
+            }
+            else {
+                LM49450_write(0x00, mute_config);   //un mute amp
+            }
+        }        
+        
+        volume_sp_prev = volume_sp;
+        volume_hp_prev = volume_hp;
     }
 }
