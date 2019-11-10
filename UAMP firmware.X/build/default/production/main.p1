@@ -86,13 +86,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 "21768
 [v _RC3 `Vb ~T0 @X0 0 e@115 ]
 "15 LM49450.h
-[v _LM49450_Wii_init `(v ~T0 @X0 0 ef ]
+[v _LM49450_Wii_init `(uc ~T0 @X0 0 ef ]
 "16
-[v _LM49450_PS2_init `(v ~T0 @X0 0 ef ]
+[v _LM49450_PS2_init `(uc ~T0 @X0 0 ef ]
 "17
-[v _LM49450_analog_init `(v ~T0 @X0 0 ef ]
+[v _LM49450_analog_init `(uc ~T0 @X0 0 ef ]
 "14
-[v _LM49450_DC_init `(v ~T0 @X0 0 ef ]
+[v _LM49450_DC_init `(uc ~T0 @X0 0 ef ]
 "13
 [v _LM49450_write `(v ~T0 @X0 0 ef2`uc`uc ]
 "21684 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f15324.h
@@ -7372,10 +7372,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;time.h: 16: inline uint32_t get_time(void);
 [; ;time.h: 17: uint32_t timer_diff(uint32_t t);
 [; ;LM49450.h: 13: void LM49450_write(unsigned char reg, char data);
-[; ;LM49450.h: 14: void LM49450_DC_init();
-[; ;LM49450.h: 15: void LM49450_Wii_init();
-[; ;LM49450.h: 16: void LM49450_PS2_init();
-[; ;LM49450.h: 17: void LM49450_analog_init();
+[; ;LM49450.h: 14: uint8_t LM49450_DC_init();
+[; ;LM49450.h: 15: uint8_t LM49450_Wii_init();
+[; ;LM49450.h: 16: uint8_t LM49450_PS2_init();
+[; ;LM49450.h: 17: uint8_t LM49450_analog_init();
 "16 main.c
 [v _PIC_SETUP `(v ~T0 @X0 1 ef ]
 {
@@ -7464,409 +7464,500 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 872 ]
 }
 "50
+[v _mute_config `uc ~T0 @X0 1 e ]
+[i _mute_config
+-> -> 0 `i `uc
+]
+[; ;main.c: 50: uint8_t mute_config = 0;
+"51
+[v _mute_state `uc ~T0 @X0 1 e ]
+[i _mute_state
+-> -> 0 `i `uc
+]
+[; ;main.c: 51: uint8_t mute_state = 0;
+"53
 [v _volume `uc ~T0 @X0 1 e ]
 [i _volume
 -> -> 15 `i `uc
 ]
-[; ;main.c: 50: uint8_t volume = 15;
-"51
-[v _set_volume `uc ~T0 @X0 1 e ]
-[i _set_volume
--> -> 0 `i `uc
+[; ;main.c: 53: uint8_t volume = 15;
+"54
+[v _volume_prev `uc ~T0 @X0 1 e ]
+[i _volume_prev
+-> -> 15 `i `uc
 ]
-[; ;main.c: 51: uint8_t set_volume = 0;
-"53
+[; ;main.c: 54: uint8_t volume_prev = 15;
+"56
 [v _vol_plus_time_start `ul ~T0 @X0 1 e ]
 [i _vol_plus_time_start
 -> -> -> 0 `i `l `ul
 ]
-[; ;main.c: 53: uint32_t vol_plus_time_start = 0;
-"54
+[; ;main.c: 56: uint32_t vol_plus_time_start = 0;
+"57
 [v _vol_plus_time_hold `ul ~T0 @X0 1 e ]
 [i _vol_plus_time_hold
 -> -> -> 0 `i `l `ul
 ]
-[; ;main.c: 54: uint32_t vol_plus_time_hold = 0;
-"56
+[; ;main.c: 57: uint32_t vol_plus_time_hold = 0;
+"59
 [v _vol_minus_time_start `ul ~T0 @X0 1 e ]
 [i _vol_minus_time_start
 -> -> -> 0 `i `l `ul
 ]
-[; ;main.c: 56: uint32_t vol_minus_time_start = 0;
-"57
+[; ;main.c: 59: uint32_t vol_minus_time_start = 0;
+"60
 [v _vol_minus_time_hold `ul ~T0 @X0 1 e ]
 [i _vol_minus_time_hold
 -> -> -> 0 `i `l `ul
 ]
-[; ;main.c: 57: uint32_t vol_minus_time_hold = 0;
-"59
+[; ;main.c: 60: uint32_t vol_minus_time_hold = 0;
+"62
 [v _vol_plus_state `uc ~T0 @X0 1 e ]
 [i _vol_plus_state
 -> -> 0 `i `uc
 ]
-[; ;main.c: 59: uint8_t vol_plus_state = 0;
-"60
+[; ;main.c: 62: uint8_t vol_plus_state = 0;
+"63
 [v _vol_minus_state `uc ~T0 @X0 1 e ]
 [i _vol_minus_state
 -> -> 0 `i `uc
 ]
-[; ;main.c: 60: uint8_t vol_minus_state = 0;
+[; ;main.c: 63: uint8_t vol_minus_state = 0;
 [v $root$_main `(v ~T0 @X0 0 e ]
-"67
+"70
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 67: void main(void) {
+[; ;main.c: 70: void main(void) {
 [e :U _main ]
 [f ]
-[; ;main.c: 69: PIC_SETUP();
-"69
-[e ( _PIC_SETUP ..  ]
-[; ;main.c: 72: PPS_unlock();
+[; ;main.c: 72: PIC_SETUP();
 "72
-[e ( _PPS_unlock ..  ]
-[; ;main.c: 73: SSP1DATPPS = 0x11;
-"73
-[e = _SSP1DATPPS -> -> 17 `i `uc ]
-[; ;main.c: 74: RC1PPS = 0x16;
-"74
-[e = _RC1PPS -> -> 22 `i `uc ]
-[; ;main.c: 75: SSP1CLKPPS = 0x10;
+[e ( _PIC_SETUP ..  ]
+[; ;main.c: 75: PPS_unlock();
 "75
-[e = _SSP1CLKPPS -> -> 16 `i `uc ]
-[; ;main.c: 76: RC0PPS = 0x15;
+[e ( _PPS_unlock ..  ]
+[; ;main.c: 76: SSP1DATPPS = 0x11;
 "76
-[e = _RC0PPS -> -> 21 `i `uc ]
-[; ;main.c: 77: PPS_lock();
+[e = _SSP1DATPPS -> -> 17 `i `uc ]
+[; ;main.c: 77: RC1PPS = 0x16;
 "77
-[e ( _PPS_lock ..  ]
-[; ;main.c: 78: I2C_Master_Init(100000);
+[e = _RC1PPS -> -> 22 `i `uc ]
+[; ;main.c: 78: SSP1CLKPPS = 0x10;
 "78
-[e ( _I2C_Master_Init (1 -> -> 100000 `l `ul ]
-[; ;main.c: 81: if(RC4 && RC3) {
+[e = _SSP1CLKPPS -> -> 16 `i `uc ]
+[; ;main.c: 79: RC0PPS = 0x15;
+"79
+[e = _RC0PPS -> -> 21 `i `uc ]
+[; ;main.c: 80: PPS_lock();
+"80
+[e ( _PPS_lock ..  ]
+[; ;main.c: 81: I2C_Master_Init(100000);
 "81
+[e ( _I2C_Master_Init (1 -> -> 100000 `l `ul ]
+[; ;main.c: 84: if(RC4 && RC3) {
+"84
 [e $ ! && _RC4 _RC3 875  ]
 {
-[; ;main.c: 82: LM49450_Wii_init();
-"82
-[e ( _LM49450_Wii_init ..  ]
-"83
-}
-[; ;main.c: 83: }
-[e $U 876  ]
-"84
-[e :U 875 ]
-[; ;main.c: 84: else if(RC4 && !RC3) {
-[e $ ! && _RC4 ! _RC3 877  ]
-{
-[; ;main.c: 85: LM49450_PS2_init();
+[; ;main.c: 85: mute_config = LM49450_Wii_init();
 "85
-[e ( _LM49450_PS2_init ..  ]
+[e = _mute_config ( _LM49450_Wii_init ..  ]
 "86
 }
 [; ;main.c: 86: }
-[e $U 878  ]
+[e $U 876  ]
 "87
-[e :U 877 ]
-[; ;main.c: 87: else if(!RC4 && !RC3) {
-[e $ ! && ! _RC4 ! _RC3 879  ]
+[e :U 875 ]
+[; ;main.c: 87: else if(RC4 && !RC3) {
+[e $ ! && _RC4 ! _RC3 877  ]
 {
-[; ;main.c: 88: LM49450_analog_init();
+[; ;main.c: 88: mute_config = LM49450_PS2_init();
 "88
-[e ( _LM49450_analog_init ..  ]
+[e = _mute_config ( _LM49450_PS2_init ..  ]
 "89
 }
 [; ;main.c: 89: }
-[e $U 880  ]
+[e $U 878  ]
 "90
-[e :U 879 ]
-[; ;main.c: 90: else if(!RC4 && RC3) {
-[e $ ! && ! _RC4 _RC3 881  ]
+[e :U 877 ]
+[; ;main.c: 90: else if(!RC4 && !RC3) {
+[e $ ! && ! _RC4 ! _RC3 879  ]
 {
-[; ;main.c: 91: LM49450_DC_init();
+[; ;main.c: 91: mute_config = LM49450_analog_init();
 "91
-[e ( _LM49450_DC_init ..  ]
+[e = _mute_config ( _LM49450_analog_init ..  ]
 "92
 }
-[e :U 881 ]
+[; ;main.c: 92: }
+[e $U 880  ]
+"93
+[e :U 879 ]
+[; ;main.c: 93: else if(!RC4 && RC3) {
+[e $ ! && ! _RC4 _RC3 881  ]
+{
+[; ;main.c: 94: mute_config = LM49450_DC_init();
+"94
+[e = _mute_config ( _LM49450_DC_init ..  ]
 "95
+}
+[e :U 881 ]
+"98
 [e :U 880 ]
 [e :U 878 ]
 [e :U 876 ]
-[; ;main.c: 92: }
-[; ;main.c: 95: LM49450_write(0x08, volume);
+[; ;main.c: 95: }
+[; ;main.c: 98: LM49450_write(0x08, volume);
 [e ( _LM49450_write (2 , -> -> 8 `i `uc _volume ]
-[; ;main.c: 96: LM49450_write(0x07, volume);
-"96
+[; ;main.c: 99: LM49450_write(0x07, volume);
+"99
 [e ( _LM49450_write (2 , -> -> 7 `i `uc _volume ]
-[; ;main.c: 98: while(1) {
-"98
+[; ;main.c: 101: while(1) {
+"101
 [e :U 883 ]
 {
-[; ;main.c: 100: if(!RA5) {
-"100
+[; ;main.c: 103: if(!RA5) {
+"103
 [e $ ! ! _RA5 885  ]
 {
-[; ;main.c: 101: switch(vol_plus_state) {
-"101
+[; ;main.c: 104: switch(vol_plus_state) {
+"104
 [e $U 887  ]
 {
-[; ;main.c: 102: case 0:
-"102
-[e :U 888 ]
-[; ;main.c: 104: vol_plus_time_start = get_time();
-"104
-[e = _vol_plus_time_start ( _get_time ..  ]
-[; ;main.c: 105: vol_plus_state = 1;
+[; ;main.c: 105: case 0:
 "105
-[e = _vol_plus_state -> -> 1 `i `uc ]
-[; ;main.c: 106: break;
-"106
-[e $U 886  ]
-[; ;main.c: 107: case 1:
+[e :U 888 ]
+[; ;main.c: 107: vol_plus_time_start = get_time();
 "107
-[e :U 889 ]
-[; ;main.c: 109: if(timer_diff(vol_plus_time_start) >= 4) {
+[e = _vol_plus_time_start ( _get_time ..  ]
+[; ;main.c: 108: vol_plus_state = 1;
+"108
+[e = _vol_plus_state -> -> 1 `i `uc ]
+[; ;main.c: 109: break;
 "109
+[e $U 886  ]
+[; ;main.c: 110: case 1:
+"110
+[e :U 889 ]
+[; ;main.c: 112: if(timer_diff(vol_plus_time_start) >= 4) {
+"112
 [e $ ! >= ( _timer_diff (1 _vol_plus_time_start -> -> -> 4 `i `l `ul 890  ]
 {
-[; ;main.c: 110: vol_plus_time_hold = get_time();
-"110
-[e = _vol_plus_time_hold ( _get_time ..  ]
-[; ;main.c: 111: vol_plus_state = 2;
-"111
-[e = _vol_plus_state -> -> 2 `i `uc ]
-[; ;main.c: 112: volume++;
-"112
-[e ++ _volume -> -> 1 `i `uc ]
-[; ;main.c: 113: set_volume = 1;
+[; ;main.c: 113: vol_plus_time_hold = get_time();
 "113
-[e = _set_volume -> -> 1 `i `uc ]
+[e = _vol_plus_time_hold ( _get_time ..  ]
+[; ;main.c: 114: vol_plus_state = 2;
 "114
+[e = _vol_plus_state -> -> 2 `i `uc ]
+[; ;main.c: 115: if((volume < 31) && mute_state == 0) volume++;
+"115
+[e $ ! && < -> _volume `i -> 31 `i == -> _mute_state `i -> 0 `i 891  ]
+[e ++ _volume -> -> 1 `i `uc ]
+[e :U 891 ]
+"116
 }
 [e :U 890 ]
-[; ;main.c: 114: }
-[; ;main.c: 115: break;
-"115
+[; ;main.c: 116: }
+[; ;main.c: 117: break;
+"117
 [e $U 886  ]
-[; ;main.c: 116: case 2:
-"116
-[e :U 891 ]
-[; ;main.c: 118: if(timer_diff(vol_plus_time_hold) >= 20) {
+[; ;main.c: 118: case 2:
 "118
-[e $ ! >= ( _timer_diff (1 _vol_plus_time_hold -> -> -> 20 `i `l `ul 892  ]
-{
-[; ;main.c: 119: vol_plus_time_hold = get_time();
-"119
-[e = _vol_plus_time_hold ( _get_time ..  ]
-[; ;main.c: 120: volume++;
-"120
-[e ++ _volume -> -> 1 `i `uc ]
-[; ;main.c: 121: set_volume = 1;
-"121
-[e = _set_volume -> -> 1 `i `uc ]
-"122
-}
 [e :U 892 ]
-[; ;main.c: 122: }
-[; ;main.c: 123: break;
+[; ;main.c: 120: if(timer_diff(vol_plus_time_hold) >= 20) {
+"120
+[e $ ! >= ( _timer_diff (1 _vol_plus_time_hold -> -> -> 20 `i `l `ul 893  ]
+{
+[; ;main.c: 121: vol_plus_time_hold = get_time();
+"121
+[e = _vol_plus_time_hold ( _get_time ..  ]
+[; ;main.c: 122: if((volume < 31) && mute_state == 0) volume++;
+"122
+[e $ ! && < -> _volume `i -> 31 `i == -> _mute_state `i -> 0 `i 894  ]
+[e ++ _volume -> -> 1 `i `uc ]
+[e :U 894 ]
 "123
-[e $U 886  ]
-[; ;main.c: 124: default:
-"124
-[e :U 893 ]
-[; ;main.c: 125: vol_plus_state = 0;
-"125
-[e = _vol_plus_state -> -> 0 `i `uc ]
-"126
 }
-[; ;main.c: 126: }
+[e :U 893 ]
+[; ;main.c: 123: }
+[; ;main.c: 124: break;
+"124
 [e $U 886  ]
-"101
-[e :U 887 ]
-[e [\ _vol_plus_state , $ -> -> 0 `i `uc 888
- , $ -> -> 1 `i `uc 889
- , $ -> -> 2 `i `uc 891
- 893 ]
+[; ;main.c: 125: default:
+"125
+[e :U 895 ]
+[; ;main.c: 126: vol_plus_state = 0;
 "126
-[e :U 886 ]
+[e = _vol_plus_state -> -> 0 `i `uc ]
 "127
 }
 [; ;main.c: 127: }
-[e $U 894  ]
+[e $U 886  ]
+"104
+[e :U 887 ]
+[e [\ _vol_plus_state , $ -> -> 0 `i `uc 888
+ , $ -> -> 1 `i `uc 889
+ , $ -> -> 2 `i `uc 892
+ 895 ]
+"127
+[e :U 886 ]
 "128
-[e :U 885 ]
-[; ;main.c: 128: else {
-{
-[; ;main.c: 129: vol_plus_state = 0;
-"129
-[e = _vol_plus_state -> -> 0 `i `uc ]
-"130
 }
-[e :U 894 ]
-[; ;main.c: 130: }
-[; ;main.c: 132: if(!RA4) {
-"132
-[e $ ! ! _RA4 895  ]
-{
-[; ;main.c: 133: switch(vol_minus_state) {
-"133
-[e $U 897  ]
-{
-[; ;main.c: 134: case 0:
-"134
-[e :U 898 ]
-[; ;main.c: 135: vol_minus_time_start = get_time();
-"135
-[e = _vol_minus_time_start ( _get_time ..  ]
-[; ;main.c: 136: vol_minus_state = 1;
-"136
-[e = _vol_minus_state -> -> 1 `i `uc ]
-[; ;main.c: 137: break;
-"137
+[; ;main.c: 128: }
 [e $U 896  ]
-[; ;main.c: 138: case 1:
-"138
-[e :U 899 ]
-[; ;main.c: 139: if(timer_diff(vol_minus_time_start) >= 4) {
-"139
-[e $ ! >= ( _timer_diff (1 _vol_minus_time_start -> -> -> 4 `i `l `ul 900  ]
+"129
+[e :U 885 ]
+[; ;main.c: 129: else {
 {
-[; ;main.c: 140: vol_minus_time_hold = get_time();
+[; ;main.c: 130: vol_plus_state = 0;
+"130
+[e = _vol_plus_state -> -> 0 `i `uc ]
+"131
+}
+[e :U 896 ]
+[; ;main.c: 131: }
+[; ;main.c: 133: if(!RA4) {
+"133
+[e $ ! ! _RA4 897  ]
+{
+[; ;main.c: 134: switch(vol_minus_state) {
+"134
+[e $U 899  ]
+{
+[; ;main.c: 135: case 0:
+"135
+[e :U 900 ]
+[; ;main.c: 136: vol_minus_time_start = get_time();
+"136
+[e = _vol_minus_time_start ( _get_time ..  ]
+[; ;main.c: 137: vol_minus_state = 1;
+"137
+[e = _vol_minus_state -> -> 1 `i `uc ]
+[; ;main.c: 138: break;
+"138
+[e $U 898  ]
+[; ;main.c: 139: case 1:
+"139
+[e :U 901 ]
+[; ;main.c: 140: if(timer_diff(vol_minus_time_start) >= 4) {
 "140
-[e = _vol_minus_time_hold ( _get_time ..  ]
-[; ;main.c: 141: vol_minus_state = 2;
+[e $ ! >= ( _timer_diff (1 _vol_minus_time_start -> -> -> 4 `i `l `ul 902  ]
+{
+[; ;main.c: 141: vol_minus_time_hold = get_time();
 "141
-[e = _vol_minus_state -> -> 2 `i `uc ]
-[; ;main.c: 142: volume--;
+[e = _vol_minus_time_hold ( _get_time ..  ]
+[; ;main.c: 142: vol_minus_state = 2;
 "142
-[e -- _volume -> -> 1 `i `uc ]
-[; ;main.c: 143: set_volume = 1;
+[e = _vol_minus_state -> -> 2 `i `uc ]
+[; ;main.c: 143: if((volume > 0) && mute_state == 0) volume--;
 "143
-[e = _set_volume -> -> 1 `i `uc ]
+[e $ ! && > -> _volume `i -> 0 `i == -> _mute_state `i -> 0 `i 903  ]
+[e -- _volume -> -> 1 `i `uc ]
+[e :U 903 ]
 "144
 }
-[e :U 900 ]
+[e :U 902 ]
 [; ;main.c: 144: }
 [; ;main.c: 145: break;
 "145
-[e $U 896  ]
+[e $U 898  ]
 [; ;main.c: 146: case 2:
 "146
-[e :U 901 ]
+[e :U 904 ]
 [; ;main.c: 147: if(timer_diff(vol_minus_time_hold) >= 20) {
 "147
-[e $ ! >= ( _timer_diff (1 _vol_minus_time_hold -> -> -> 20 `i `l `ul 902  ]
+[e $ ! >= ( _timer_diff (1 _vol_minus_time_hold -> -> -> 20 `i `l `ul 905  ]
 {
 [; ;main.c: 148: vol_minus_time_hold = get_time();
 "148
 [e = _vol_minus_time_hold ( _get_time ..  ]
-[; ;main.c: 149: volume--;
+[; ;main.c: 149: if((volume > 0) && mute_state == 0) volume--;
 "149
+[e $ ! && > -> _volume `i -> 0 `i == -> _mute_state `i -> 0 `i 906  ]
 [e -- _volume -> -> 1 `i `uc ]
-[; ;main.c: 150: set_volume = 1;
+[e :U 906 ]
 "150
-[e = _set_volume -> -> 1 `i `uc ]
-"151
 }
-[e :U 902 ]
-[; ;main.c: 151: }
-[; ;main.c: 152: break;
+[e :U 905 ]
+[; ;main.c: 150: }
+[; ;main.c: 151: break;
+"151
+[e $U 898  ]
+[; ;main.c: 152: default:
 "152
-[e $U 896  ]
-[; ;main.c: 153: default:
+[e :U 907 ]
+[; ;main.c: 153: vol_minus_state = 0;
 "153
-[e :U 903 ]
-[; ;main.c: 154: vol_minus_state = 0;
-"154
 [e = _vol_minus_state -> -> 0 `i `uc ]
+"154
+}
+[; ;main.c: 154: }
+[e $U 898  ]
+"134
+[e :U 899 ]
+[e [\ _vol_minus_state , $ -> -> 0 `i `uc 900
+ , $ -> -> 1 `i `uc 901
+ , $ -> -> 2 `i `uc 904
+ 907 ]
+"154
+[e :U 898 ]
 "155
 }
 [; ;main.c: 155: }
-[e $U 896  ]
-"133
-[e :U 897 ]
-[e [\ _vol_minus_state , $ -> -> 0 `i `uc 898
- , $ -> -> 1 `i `uc 899
- , $ -> -> 2 `i `uc 901
- 903 ]
-"155
-[e :U 896 ]
+[e $U 908  ]
 "156
-}
-[; ;main.c: 156: }
-[e $U 904  ]
+[e :U 897 ]
+[; ;main.c: 156: else {
+{
+[; ;main.c: 157: vol_minus_state = 0;
 "157
-[e :U 895 ]
-[; ;main.c: 157: else {
-{
-[; ;main.c: 158: vol_minus_state = 0;
-"158
 [e = _vol_minus_state -> -> 0 `i `uc ]
-"159
-}
-[e :U 904 ]
-[; ;main.c: 159: }
-[; ;main.c: 162: if((vol_plus_state == 2) && (vol_minus_state == 2)) {
-"162
-[e $ ! && == -> _vol_plus_state `i -> 2 `i == -> _vol_minus_state `i -> 2 `i 905  ]
-{
-[; ;main.c: 163: volume = 0;
-"163
-[e = _volume -> -> 0 `i `uc ]
-[; ;main.c: 164: set_volume = 1;
-"164
-[e = _set_volume -> -> 1 `i `uc ]
-"165
-}
-[e :U 905 ]
-[; ;main.c: 165: }
-[; ;main.c: 167: if(set_volume) {
-"167
-[e $ ! != -> _set_volume `i -> -> -> 0 `i `uc `i 906  ]
-{
-[; ;main.c: 168: if(volume < 1 || volume > 250) {
-"168
-[e $ ! || < -> _volume `i -> 1 `i > -> _volume `i -> 250 `i 907  ]
-{
-[; ;main.c: 169: volume = 0;
-"169
-[e = _volume -> -> 0 `i `uc ]
-"170
-}
-[e :U 907 ]
-[; ;main.c: 170: }
-[; ;main.c: 171: if(volume > 31) {
-"171
-[e $ ! > -> _volume `i -> 31 `i 908  ]
-{
-[; ;main.c: 172: volume = 31;
-"172
-[e = _volume -> -> 31 `i `uc ]
-"173
+"158
 }
 [e :U 908 ]
-[; ;main.c: 173: }
-[; ;main.c: 175: LM49450_write(0x08, volume);
+[; ;main.c: 158: }
+[; ;main.c: 161: if((vol_plus_state == 2) && (vol_minus_state == 2)) {
+"161
+[e $ ! && == -> _vol_plus_state `i -> 2 `i == -> _vol_minus_state `i -> 2 `i 909  ]
+{
+[; ;main.c: 162: switch(mute_state) {
+"162
+[e $U 911  ]
+{
+[; ;main.c: 163: case 0:
+"163
+[e :U 912 ]
+[; ;main.c: 165: LM49450_write(0x00, (mute_config | 0b100));
+"165
+[e ( _LM49450_write (2 , -> -> 0 `i `uc -> | -> _mute_config `i -> 4 `i `uc ]
+[; ;main.c: 166: mute_state = 1;
+"166
+[e = _mute_state -> -> 1 `i `uc ]
+[; ;main.c: 167: break;
+"167
+[e $U 910  ]
+[; ;main.c: 168: case 1:
+"168
+[e :U 913 ]
+[; ;main.c: 170: break;
+"170
+[e $U 910  ]
+[; ;main.c: 171: case 2:
+"171
+[e :U 914 ]
+[; ;main.c: 172: LM49450_write(0x00, mute_config);
+"172
+[e ( _LM49450_write (2 , -> -> 0 `i `uc _mute_config ]
+[; ;main.c: 173: mute_state = 3;
+"173
+[e = _mute_state -> -> 3 `i `uc ]
+[; ;main.c: 174: break;
+"174
+[e $U 910  ]
+[; ;main.c: 175: case 3:
 "175
-[e ( _LM49450_write (2 , -> -> 8 `i `uc _volume ]
-[; ;main.c: 176: LM49450_write(0x07, volume);
-"176
-[e ( _LM49450_write (2 , -> -> 7 `i `uc _volume ]
-[; ;main.c: 178: set_volume = 0;
+[e :U 915 ]
+[; ;main.c: 177: break;
+"177
+[e $U 910  ]
+[; ;main.c: 178: default:
 "178
-[e = _set_volume -> -> 0 `i `uc ]
+[e :U 916 ]
+[; ;main.c: 179: mute_state = 0;
 "179
-}
-[e :U 906 ]
+[e = _mute_state -> -> 0 `i `uc ]
 "180
 }
+[; ;main.c: 180: }
+[e $U 910  ]
+"162
+[e :U 911 ]
+[e [\ _mute_state , $ -> -> 0 `i `uc 912
+ , $ -> -> 1 `i `uc 913
+ , $ -> -> 2 `i `uc 914
+ , $ -> -> 3 `i `uc 915
+ 916 ]
+"180
+[e :U 910 ]
+"181
+}
+[; ;main.c: 181: }
+[e $U 917  ]
+"182
+[e :U 909 ]
+[; ;main.c: 182: else {
+{
+[; ;main.c: 183: if(mute_state == 1) {
+"183
+[e $ ! == -> _mute_state `i -> 1 `i 918  ]
+{
+[; ;main.c: 184: mute_state = 2;
+"184
+[e = _mute_state -> -> 2 `i `uc ]
+"185
+}
+[e :U 918 ]
+[; ;main.c: 185: }
+[; ;main.c: 186: if(mute_state == 3) {
+"186
+[e $ ! == -> _mute_state `i -> 3 `i 919  ]
+{
+[; ;main.c: 187: mute_state = 0;
+"187
+[e = _mute_state -> -> 0 `i `uc ]
+"188
+}
+[e :U 919 ]
+"189
+}
+[e :U 917 ]
+[; ;main.c: 188: }
+[; ;main.c: 189: }
+[; ;main.c: 191: if((volume != volume_prev) && mute_state == 0) {
+"191
+[e $ ! && != -> _volume `i -> _volume_prev `i == -> _mute_state `i -> 0 `i 920  ]
+{
+[; ;main.c: 193: if(volume == 0) {
+"193
+[e $ ! == -> _volume `i -> 0 `i 921  ]
+{
+[; ;main.c: 194: LM49450_write(0x00, (mute_config | 0b00000100));
+"194
+[e ( _LM49450_write (2 , -> -> 0 `i `uc -> | -> _mute_config `i -> 4 `i `uc ]
+"195
+}
+[; ;main.c: 195: }
+[e $U 922  ]
+"196
+[e :U 921 ]
+[; ;main.c: 196: else {
+{
+[; ;main.c: 197: LM49450_write(0x00, mute_config);
+"197
+[e ( _LM49450_write (2 , -> -> 0 `i `uc _mute_config ]
+[; ;main.c: 198: LM49450_write(0x08, volume);
+"198
+[e ( _LM49450_write (2 , -> -> 8 `i `uc _volume ]
+[; ;main.c: 199: LM49450_write(0x07, volume);
+"199
+[e ( _LM49450_write (2 , -> -> 7 `i `uc _volume ]
+"200
+}
+[e :U 922 ]
+"201
+}
+[e :U 920 ]
+[; ;main.c: 200: }
+[; ;main.c: 201: }
+[; ;main.c: 203: volume_prev = volume;
+"203
+[e = _volume_prev _volume ]
+"204
+}
 [e :U 882 ]
-"98
+"101
 [e $U 883  ]
 [e :U 884 ]
-[; ;main.c: 179: }
-[; ;main.c: 180: }
-[; ;main.c: 181: }
-"181
+[; ;main.c: 204: }
+[; ;main.c: 205: }
+"205
 [e :UE 874 ]
 }

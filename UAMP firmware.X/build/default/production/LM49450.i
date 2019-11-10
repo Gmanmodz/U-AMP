@@ -10983,7 +10983,93 @@ void I2C_Master_Ack();
 void I2C_Master_nAck();
 unsigned char I2C_Master_Read(char ack);
 
-# 13 "LM49450.c"
+# 13 "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\c90\stdint.h"
+typedef signed char int8_t;
+
+# 20
+typedef signed int int16_t;
+
+# 28
+typedef __int24 int24_t;
+
+# 36
+typedef signed long int int32_t;
+
+# 52
+typedef unsigned char uint8_t;
+
+# 58
+typedef unsigned int uint16_t;
+
+# 65
+typedef __uint24 uint24_t;
+
+# 72
+typedef unsigned long int uint32_t;
+
+# 88
+typedef signed char int_least8_t;
+
+# 96
+typedef signed int int_least16_t;
+
+# 109
+typedef __int24 int_least24_t;
+
+# 118
+typedef signed long int int_least32_t;
+
+# 136
+typedef unsigned char uint_least8_t;
+
+# 143
+typedef unsigned int uint_least16_t;
+
+# 154
+typedef __uint24 uint_least24_t;
+
+# 162
+typedef unsigned long int uint_least32_t;
+
+# 181
+typedef signed char int_fast8_t;
+
+# 188
+typedef signed int int_fast16_t;
+
+# 200
+typedef __int24 int_fast24_t;
+
+# 208
+typedef signed long int int_fast32_t;
+
+# 224
+typedef unsigned char uint_fast8_t;
+
+# 230
+typedef unsigned int uint_fast16_t;
+
+# 240
+typedef __uint24 uint_fast24_t;
+
+# 247
+typedef unsigned long int uint_fast32_t;
+
+# 268
+typedef int32_t intmax_t;
+
+# 282
+typedef uint32_t uintmax_t;
+
+# 289
+typedef int16_t intptr_t;
+
+
+
+
+typedef uint16_t uintptr_t;
+
+# 14 "LM49450.c"
 void LM49450_write(unsigned char reg, char data) {
 I2C_Master_Start();
 I2C_Master_Write(0b1111101 << 1);
@@ -10992,29 +11078,31 @@ I2C_Master_Write(data);
 I2C_Master_Stop();
 }
 
-void LM49450_DC_init() {
+uint8_t LM49450_DC_init() {
 
-
-
-
-LM49450_write(0x00, 0b00101001);
+# 28
+uint8_t reg0_DC = 0b00101001;
+LM49450_write(0x00, reg0_DC);
 
 
 LM49450_write(0x01, 0b00000001);
 
-# 35
+# 38
 LM49450_write(0x04, 0b00000000);
 
 LM49450_write(0x02, 0x44);
 LM49450_write(0x03, 0b00000010);
+
+return reg0_DC;
 }
 
-void LM49450_Wii_init() {
+uint8_t LM49450_Wii_init() {
 
 
 
 
-LM49450_write(0x00, 0b00101001);
+uint8_t reg0_Wii = 0b00101001;
+LM49450_write(0x00, reg0_Wii);
 
 
 LM49450_write(0x01, 0b00000001);
@@ -11026,14 +11114,17 @@ LM49450_write(0x02, 0x4B);
 LM49450_write(0x03, 0b01110001);
 
 LM49450_write(0x04, 0b00000000);
+
+return reg0_Wii;
 }
 
-void LM49450_PS2_init() {
+uint8_t LM49450_PS2_init() {
 
 
 
 
-LM49450_write(0x00, 0b00101001);
+uint8_t reg0_PS2 = 0b00101001;
+LM49450_write(0x00, reg0_PS2);
 
 
 LM49450_write(0x01, 0b00000010);
@@ -11045,10 +11136,15 @@ LM49450_write(0x02, 0x4B);
 LM49450_write(0x03, 0b01110000);
 
 LM49450_write(0x04, 0b00000000);
+
+return reg0_PS2;
 }
 
-void LM49450_analog_init() {
+uint8_t LM49450_analog_init() {
 
-# 85
-LM49450_write(0x00, 0b00101011);
+# 96
+uint8_t reg0_analog = 0b00101011;
+LM49450_write(0x00, reg0_analog);
+
+return reg0_analog;
 }

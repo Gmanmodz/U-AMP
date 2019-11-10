@@ -7187,118 +7187,178 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;I2C.h: 25: void I2C_Master_Ack();
 [; ;I2C.h: 26: void I2C_Master_nAck();
 [; ;I2C.h: 27: unsigned char I2C_Master_Read(char ack);
-"13 LM49450.c
+[; ;stdint.h: 13: typedef signed char int8_t;
+[; ;stdint.h: 20: typedef signed int int16_t;
+[; ;stdint.h: 28: typedef __int24 int24_t;
+[; ;stdint.h: 36: typedef signed long int int32_t;
+[; ;stdint.h: 52: typedef unsigned char uint8_t;
+[; ;stdint.h: 58: typedef unsigned int uint16_t;
+[; ;stdint.h: 65: typedef __uint24 uint24_t;
+[; ;stdint.h: 72: typedef unsigned long int uint32_t;
+[; ;stdint.h: 88: typedef signed char int_least8_t;
+[; ;stdint.h: 96: typedef signed int int_least16_t;
+[; ;stdint.h: 109: typedef __int24 int_least24_t;
+[; ;stdint.h: 118: typedef signed long int int_least32_t;
+[; ;stdint.h: 136: typedef unsigned char uint_least8_t;
+[; ;stdint.h: 143: typedef unsigned int uint_least16_t;
+[; ;stdint.h: 154: typedef __uint24 uint_least24_t;
+[; ;stdint.h: 162: typedef unsigned long int uint_least32_t;
+[; ;stdint.h: 181: typedef signed char int_fast8_t;
+[; ;stdint.h: 188: typedef signed int int_fast16_t;
+[; ;stdint.h: 200: typedef __int24 int_fast24_t;
+[; ;stdint.h: 208: typedef signed long int int_fast32_t;
+[; ;stdint.h: 224: typedef unsigned char uint_fast8_t;
+[; ;stdint.h: 230: typedef unsigned int uint_fast16_t;
+[; ;stdint.h: 240: typedef __uint24 uint_fast24_t;
+[; ;stdint.h: 247: typedef unsigned long int uint_fast32_t;
+[; ;stdint.h: 268: typedef int32_t intmax_t;
+[; ;stdint.h: 282: typedef uint32_t uintmax_t;
+[; ;stdint.h: 289: typedef int16_t intptr_t;
+[; ;stdint.h: 294: typedef uint16_t uintptr_t;
+"14 LM49450.c
 [v _LM49450_write `(v ~T0 @X0 1 ef2`uc`uc ]
 {
-[; ;LM49450.c: 13: void LM49450_write(unsigned char reg, char data) {
+[; ;LM49450.c: 14: void LM49450_write(unsigned char reg, char data) {
 [e :U _LM49450_write ]
 [v _reg `uc ~T0 @X0 1 r1 ]
 [v _data `uc ~T0 @X0 1 r2 ]
 [f ]
-[; ;LM49450.c: 14: I2C_Master_Start();
-"14
-[e ( _I2C_Master_Start ..  ]
-[; ;LM49450.c: 15: I2C_Master_Write(0b1111101 << 1);
+[; ;LM49450.c: 15: I2C_Master_Start();
 "15
-[e ( _I2C_Master_Write (1 -> << -> 125 `i -> 1 `i `uc ]
-[; ;LM49450.c: 16: I2C_Master_Write(reg);
+[e ( _I2C_Master_Start ..  ]
+[; ;LM49450.c: 16: I2C_Master_Write(0b1111101 << 1);
 "16
-[e ( _I2C_Master_Write (1 _reg ]
-[; ;LM49450.c: 17: I2C_Master_Write(data);
+[e ( _I2C_Master_Write (1 -> << -> 125 `i -> 1 `i `uc ]
+[; ;LM49450.c: 17: I2C_Master_Write(reg);
 "17
-[e ( _I2C_Master_Write (1 _data ]
-[; ;LM49450.c: 18: I2C_Master_Stop();
+[e ( _I2C_Master_Write (1 _reg ]
+[; ;LM49450.c: 18: I2C_Master_Write(data);
 "18
-[e ( _I2C_Master_Stop ..  ]
-[; ;LM49450.c: 19: }
+[e ( _I2C_Master_Write (1 _data ]
+[; ;LM49450.c: 19: I2C_Master_Stop();
 "19
+[e ( _I2C_Master_Stop ..  ]
+[; ;LM49450.c: 20: }
+"20
 [e :UE 871 ]
 }
-"21
-[v _LM49450_DC_init `(v ~T0 @X0 1 ef ]
+"22
+[v _LM49450_DC_init `(uc ~T0 @X0 1 ef ]
 {
-[; ;LM49450.c: 21: void LM49450_DC_init() {
+[; ;LM49450.c: 22: uint8_t LM49450_DC_init() {
 [e :U _LM49450_DC_init ]
 [f ]
-[; ;LM49450.c: 26: LM49450_write(0x00, 0b00101001);
-"26
-[e ( _LM49450_write (2 , -> -> 0 `i `uc -> -> 41 `i `uc ]
-[; ;LM49450.c: 29: LM49450_write(0x01, 0b00000001);
+"28
+[v _reg0_DC `uc ~T0 @X0 1 a ]
+[; ;LM49450.c: 28: uint8_t reg0_DC = 0b00101001;
+[e = _reg0_DC -> -> 41 `i `uc ]
+[; ;LM49450.c: 29: LM49450_write(0x00, reg0_DC);
 "29
+[e ( _LM49450_write (2 , -> -> 0 `i `uc _reg0_DC ]
+[; ;LM49450.c: 32: LM49450_write(0x01, 0b00000001);
+"32
 [e ( _LM49450_write (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-[; ;LM49450.c: 35: LM49450_write(0x04, 0b00000000);
-"35
-[e ( _LM49450_write (2 , -> -> 4 `i `uc -> -> 0 `i `uc ]
-[; ;LM49450.c: 37: LM49450_write(0x02, 0x44);
-"37
-[e ( _LM49450_write (2 , -> -> 2 `i `uc -> -> 68 `i `uc ]
-[; ;LM49450.c: 38: LM49450_write(0x03, 0b00000010);
+[; ;LM49450.c: 38: LM49450_write(0x04, 0b00000000);
 "38
+[e ( _LM49450_write (2 , -> -> 4 `i `uc -> -> 0 `i `uc ]
+[; ;LM49450.c: 40: LM49450_write(0x02, 0x44);
+"40
+[e ( _LM49450_write (2 , -> -> 2 `i `uc -> -> 68 `i `uc ]
+[; ;LM49450.c: 41: LM49450_write(0x03, 0b00000010);
+"41
 [e ( _LM49450_write (2 , -> -> 3 `i `uc -> -> 2 `i `uc ]
-[; ;LM49450.c: 39: }
-"39
+[; ;LM49450.c: 43: return reg0_DC;
+"43
+[e ) _reg0_DC ]
+[e $UE 872  ]
+[; ;LM49450.c: 44: }
+"44
 [e :UE 872 ]
 }
-"41
-[v _LM49450_Wii_init `(v ~T0 @X0 1 ef ]
+"46
+[v _LM49450_Wii_init `(uc ~T0 @X0 1 ef ]
 {
-[; ;LM49450.c: 41: void LM49450_Wii_init() {
+[; ;LM49450.c: 46: uint8_t LM49450_Wii_init() {
 [e :U _LM49450_Wii_init ]
 [f ]
-[; ;LM49450.c: 46: LM49450_write(0x00, 0b00101001);
-"46
-[e ( _LM49450_write (2 , -> -> 0 `i `uc -> -> 41 `i `uc ]
-[; ;LM49450.c: 49: LM49450_write(0x01, 0b00000001);
-"49
-[e ( _LM49450_write (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-[; ;LM49450.c: 50: LM49450_write(0x02, 0x4B);
-"50
-[e ( _LM49450_write (2 , -> -> 2 `i `uc -> -> 75 `i `uc ]
-[; ;LM49450.c: 55: LM49450_write(0x03, 0b01110001);
+"51
+[v _reg0_Wii `uc ~T0 @X0 1 a ]
+[; ;LM49450.c: 51: uint8_t reg0_Wii = 0b00101001;
+[e = _reg0_Wii -> -> 41 `i `uc ]
+[; ;LM49450.c: 52: LM49450_write(0x00, reg0_Wii);
+"52
+[e ( _LM49450_write (2 , -> -> 0 `i `uc _reg0_Wii ]
+[; ;LM49450.c: 55: LM49450_write(0x01, 0b00000001);
 "55
+[e ( _LM49450_write (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+[; ;LM49450.c: 56: LM49450_write(0x02, 0x4B);
+"56
+[e ( _LM49450_write (2 , -> -> 2 `i `uc -> -> 75 `i `uc ]
+[; ;LM49450.c: 61: LM49450_write(0x03, 0b01110001);
+"61
 [e ( _LM49450_write (2 , -> -> 3 `i `uc -> -> 113 `i `uc ]
-[; ;LM49450.c: 57: LM49450_write(0x04, 0b00000000);
-"57
+[; ;LM49450.c: 63: LM49450_write(0x04, 0b00000000);
+"63
 [e ( _LM49450_write (2 , -> -> 4 `i `uc -> -> 0 `i `uc ]
-[; ;LM49450.c: 58: }
-"58
+[; ;LM49450.c: 65: return reg0_Wii;
+"65
+[e ) _reg0_Wii ]
+[e $UE 873  ]
+[; ;LM49450.c: 66: }
+"66
 [e :UE 873 ]
 }
-"60
-[v _LM49450_PS2_init `(v ~T0 @X0 1 ef ]
+"68
+[v _LM49450_PS2_init `(uc ~T0 @X0 1 ef ]
 {
-[; ;LM49450.c: 60: void LM49450_PS2_init() {
+[; ;LM49450.c: 68: uint8_t LM49450_PS2_init() {
 [e :U _LM49450_PS2_init ]
 [f ]
-[; ;LM49450.c: 65: LM49450_write(0x00, 0b00101001);
-"65
-[e ( _LM49450_write (2 , -> -> 0 `i `uc -> -> 41 `i `uc ]
-[; ;LM49450.c: 68: LM49450_write(0x01, 0b00000010);
-"68
-[e ( _LM49450_write (2 , -> -> 1 `i `uc -> -> 2 `i `uc ]
-[; ;LM49450.c: 70: LM49450_write(0x02, 0x4B);
-"70
-[e ( _LM49450_write (2 , -> -> 2 `i `uc -> -> 75 `i `uc ]
-[; ;LM49450.c: 74: LM49450_write(0x03, 0b01110000);
+"73
+[v _reg0_PS2 `uc ~T0 @X0 1 a ]
+[; ;LM49450.c: 73: uint8_t reg0_PS2 = 0b00101001;
+[e = _reg0_PS2 -> -> 41 `i `uc ]
+[; ;LM49450.c: 74: LM49450_write(0x00, reg0_PS2);
 "74
-[e ( _LM49450_write (2 , -> -> 3 `i `uc -> -> 112 `i `uc ]
-[; ;LM49450.c: 76: LM49450_write(0x04, 0b00000000);
-"76
-[e ( _LM49450_write (2 , -> -> 4 `i `uc -> -> 0 `i `uc ]
-[; ;LM49450.c: 77: }
+[e ( _LM49450_write (2 , -> -> 0 `i `uc _reg0_PS2 ]
+[; ;LM49450.c: 77: LM49450_write(0x01, 0b00000010);
 "77
+[e ( _LM49450_write (2 , -> -> 1 `i `uc -> -> 2 `i `uc ]
+[; ;LM49450.c: 79: LM49450_write(0x02, 0x4B);
+"79
+[e ( _LM49450_write (2 , -> -> 2 `i `uc -> -> 75 `i `uc ]
+[; ;LM49450.c: 83: LM49450_write(0x03, 0b01110000);
+"83
+[e ( _LM49450_write (2 , -> -> 3 `i `uc -> -> 112 `i `uc ]
+[; ;LM49450.c: 85: LM49450_write(0x04, 0b00000000);
+"85
+[e ( _LM49450_write (2 , -> -> 4 `i `uc -> -> 0 `i `uc ]
+[; ;LM49450.c: 87: return reg0_PS2;
+"87
+[e ) _reg0_PS2 ]
+[e $UE 874  ]
+[; ;LM49450.c: 88: }
+"88
 [e :UE 874 ]
 }
-"79
-[v _LM49450_analog_init `(v ~T0 @X0 1 ef ]
+"90
+[v _LM49450_analog_init `(uc ~T0 @X0 1 ef ]
 {
-[; ;LM49450.c: 79: void LM49450_analog_init() {
+[; ;LM49450.c: 90: uint8_t LM49450_analog_init() {
 [e :U _LM49450_analog_init ]
 [f ]
-[; ;LM49450.c: 85: LM49450_write(0x00, 0b00101011);
-"85
-[e ( _LM49450_write (2 , -> -> 0 `i `uc -> -> 43 `i `uc ]
-[; ;LM49450.c: 86: }
-"86
+"96
+[v _reg0_analog `uc ~T0 @X0 1 a ]
+[; ;LM49450.c: 96: uint8_t reg0_analog = 0b00101011;
+[e = _reg0_analog -> -> 43 `i `uc ]
+[; ;LM49450.c: 97: LM49450_write(0x00, reg0_analog);
+"97
+[e ( _LM49450_write (2 , -> -> 0 `i `uc _reg0_analog ]
+[; ;LM49450.c: 99: return reg0_analog;
+"99
+[e ) _reg0_analog ]
+[e $UE 875  ]
+[; ;LM49450.c: 100: }
+"100
 [e :UE 875 ]
 }

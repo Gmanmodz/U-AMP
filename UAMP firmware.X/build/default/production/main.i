@@ -11119,10 +11119,10 @@ uint32_t timer_diff(uint32_t t);
 
 # 13 "LM49450.h"
 void LM49450_write(unsigned char reg, char data);
-void LM49450_DC_init();
-void LM49450_Wii_init();
-void LM49450_PS2_init();
-void LM49450_analog_init();
+uint8_t LM49450_DC_init();
+uint8_t LM49450_Wii_init();
+uint8_t LM49450_PS2_init();
+uint8_t LM49450_analog_init();
 
 # 16 "main.c"
 void PIC_SETUP(){
@@ -11159,8 +11159,11 @@ timer_counter++;
 
 }
 
+uint8_t mute_config = 0;
+uint8_t mute_state = 0;
+
 uint8_t volume = 15;
-uint8_t set_volume = 0;
+uint8_t volume_prev = 15;
 
 uint32_t vol_plus_time_start = 0;
 uint32_t vol_plus_time_hold = 0;
@@ -11171,7 +11174,7 @@ uint32_t vol_minus_time_hold = 0;
 uint8_t vol_plus_state = 0;
 uint8_t vol_minus_state = 0;
 
-# 67
+# 70
 void main(void) {
 
 PIC_SETUP();
@@ -11187,16 +11190,16 @@ I2C_Master_Init(100000);
 
 
 if(RC4 && RC3) {
-LM49450_Wii_init();
+mute_config = LM49450_Wii_init();
 }
 else if(RC4 && !RC3) {
-LM49450_PS2_init();
+mute_config = LM49450_PS2_init();
 }
 else if(!RC4 && !RC3) {
-LM49450_analog_init();
+mute_config = LM49450_analog_init();
 }
 else if(!RC4 && RC3) {
-LM49450_DC_init();
+mute_config = LM49450_DC_init();
 }
 
 
@@ -11217,16 +11220,14 @@ case 1:
 if(timer_diff(vol_plus_time_start) >= 4) {
 vol_plus_time_hold = get_time();
 vol_plus_state = 2;
-volume++;
-set_volume = 1;
+if((volume < 31) && mute_state == 0) volume++;
 }
 break;
 case 2:
 
 if(timer_diff(vol_plus_time_hold) >= 20) {
 vol_plus_time_hold = get_time();
-volume++;
-set_volume = 1;
+if((volume < 31) && mute_state == 0) volume++;
 }
 break;
 default:
@@ -11247,15 +11248,13 @@ case 1:
 if(timer_diff(vol_minus_time_start) >= 4) {
 vol_minus_time_hold = get_time();
 vol_minus_state = 2;
-volume--;
-set_volume = 1;
+if((volume > 0) && mute_state == 0) volume--;
 }
 break;
 case 2:
 if(timer_diff(vol_minus_time_hold) >= 20) {
 vol_minus_time_hold = get_time();
-volume--;
-set_volume = 1;
+if((volume > 0) && mute_state == 0) volume--;
 }
 break;
 default:
@@ -11268,22 +11267,47 @@ vol_minus_state = 0;
 
 
 if((vol_plus_state == 2) && (vol_minus_state == 2)) {
-volume = 0;
-set_volume = 1;
+switch(mute_state) {
+case 0:
+
+LM49450_write(0x00, (mute_config | 0b100));
+mute_state = 1;
+break;
+case 1:
+
+break;
+case 2:
+LM49450_write(0x00, mute_config);
+mute_state = 3;
+break;
+case 3:
+
+break;
+default:
+mute_state = 0;
+}
+}
+else {
+if(mute_state == 1) {
+mute_state = 2;
+}
+if(mute_state == 3) {
+mute_state = 0;
+}
 }
 
-if(set_volume) {
-if(volume < 1 || volume > 250) {
-volume = 0;
-}
-if(volume > 31) {
-volume = 31;
-}
+if((volume != volume_prev) && mute_state == 0) {
 
+if(volume == 0) {
+LM49450_write(0x00, (mute_config | 0b00000100));
+}
+else {
+LM49450_write(0x00, mute_config);
 LM49450_write(0x08, volume);
 LM49450_write(0x07, volume);
-
-set_volume = 0;
 }
+}
+
+volume_prev = volume;
 }
 }
