@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files (x86)\Microchip\xc8\v2.10\pic\dat\en_msgs.txt \
   -cs -h+dist/default/production\UAMP_firmware.X.production.sym \
   --cmf=dist/default/production\UAMP_firmware.X.production.cmf -z \
-  -Q16F15324 -oC:\Users\Gunnar\AppData\Local\Temp\se88.2 \
+  -Q16LF15324 -oC:\Users\Gunnar\AppData\Local\Temp\sib8.2 \
   --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/UAMP_firmware.X.production.map -E1 -ver=XC8 \
   --acfsm=1493 -ASTACK=0202Ah-021EFh -pstack=STACK -ACODE=00h-07FFhx2 \
@@ -41,17 +41,17 @@ Linker command line:
   -pfunctab=ENTRY -ACONFIG=08007h-0800Bh -pconfig=CONFIG -DCONFIG=2 \
   -AIDLOC=08000h-08003h -pidloc=IDLOC -DIDLOC=2 -DCODE=2 -DSTRCODE=2 \
   -DSTRING=2 -DCONST=2 -DENTRY=2 -k \
-  C:\Users\Gunnar\AppData\Local\Temp\se88.o \
+  C:\Users\Gunnar\AppData\Local\Temp\sib8.o \
   dist/default/production\UAMP_firmware.X.production.o 
 
 Object code version is 3.11
 
-Machine type is 16F15324
+Machine type is 16LF15324
 
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\Gunnar\AppData\Local\Temp\se88.o
+C:\Users\Gunnar\AppData\Local\Temp\sib8.o
                 end_init                             1C       1C        2        8       0
                 reset_vec                             0        0        2        0       0
                 config                             8007     8007        5    1000E       0
@@ -559,7 +559,7 @@ _WPUA                         (abs)        01F39
 _WPUC                         (abs)        01F4F
 __CFG_BBEN$OFF                (abs)        00000
 __CFG_BBSIZE$BB512            (abs)        00000
-__CFG_BOREN$ON                (abs)        00000
+__CFG_BOREN$OFF               (abs)        00000
 __CFG_BORV$LO                 (abs)        00000
 __CFG_CLKOUTEN$OFF            (abs)        00000
 __CFG_CP$OFF                  (abs)        00000

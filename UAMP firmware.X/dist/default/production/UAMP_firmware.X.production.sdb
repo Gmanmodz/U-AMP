@@ -1,7 +1,7 @@
 [p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PIC14E ]
 [d version 1.1 ]
 [d edition pro ]
-[d chip 16F15324 ]
+[d chip 16LF15324 ]
 [d frameptr 6 ]
 "5 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\__lldiv.c
 [v ___lldiv __lldiv `(ul  1 e 4 0 ]
@@ -52,7 +52,7 @@
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-"426 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f15324.h
+"426 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16lf15324.h
 [u S133 . 1 `S128 1 . 1 0 ]
 [v _INTCONbits INTCONbits `VES133  1 e 1 @11 ]
 "546
@@ -172,39 +172,39 @@
 "8242
 [u S122 . 1 `S119 1 . 1 0 ]
 [v _PIE4bits PIE4bits `VES122  1 e 1 @1818 ]
-"15805
+"15784
 [v _PPSLOCK PPSLOCK `VEuc  1 e 1 @7823 ]
-"16617
+"16596
 [v _SSP1CLKPPS SSP1CLKPPS `VEuc  1 e 1 @7877 ]
-"16675
+"16654
 [v _SSP1DATPPS SSP1DATPPS `VEuc  1 e 1 @7878 ]
-"17287
+"17266
 [v _RC0PPS RC0PPS `VEuc  1 e 1 @7968 ]
-"17331
+"17310
 [v _RC1PPS RC1PPS `VEuc  1 e 1 @7969 ]
-"17551
+"17530
 [v _ANSELA ANSELA `VEuc  1 e 1 @7992 ]
-"17596
+"17575
 [v _WPUA WPUA `VEuc  1 e 1 @7993 ]
-"17936
+"17915
 [v _ANSELC ANSELC `VEuc  1 e 1 @8014 ]
-"17986
+"17965
 [v _WPUC WPUC `VEuc  1 e 1 @8015 ]
-"21666
+"21645
 [v _RA4 RA4 `VEb  1 e 0 @100 ]
-"21684
+"21663
 [v _RA5 RA5 `VEb  1 e 0 @101 ]
-"21702
+"21681
 [v _RC0 RC0 `VEb  1 e 0 @112 ]
-"21720
+"21699
 [v _RC1 RC1 `VEb  1 e 0 @113 ]
-"21744
+"21723
 [v _RC2 RC2 `VEb  1 e 0 @114 ]
-"21768
+"21747
 [v _RC3 RC3 `VEb  1 e 0 @115 ]
-"21786
+"21765
 [v _RC4 RC4 `VEb  1 e 0 @116 ]
-"22560
+"22539
 [v _TMR1IF TMR1IF `VEb  1 e 0 @14464 ]
 "50 C:\Users\Gunnar\Desktop\U-AMP\UAMP firmware.X\main.c
 [v _mute_config mute_config `uc  1 e 1 0 ]
