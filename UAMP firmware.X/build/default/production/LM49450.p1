@@ -7236,117 +7236,117 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;LM49450.c: 22: uint8_t LM49450_DC_init() {
 [e :U _LM49450_DC_init ]
 [f ]
-"28
+"23
 [v _reg0_DC `uc ~T0 @X0 1 a ]
-[; ;LM49450.c: 28: uint8_t reg0_DC = 0b00101001;
+[; ;LM49450.c: 23: uint8_t reg0_DC = 0b00101001;
 [e = _reg0_DC -> -> 41 `i `uc ]
-[; ;LM49450.c: 29: LM49450_write(0x00, reg0_DC);
-"29
+[; ;LM49450.c: 24: LM49450_write(0x00, reg0_DC);
+"24
 [e ( _LM49450_write (2 , -> -> 0 `i `uc _reg0_DC ]
-[; ;LM49450.c: 32: LM49450_write(0x01, 0b00000001);
-"32
+[; ;LM49450.c: 25: LM49450_write(0x01, 0b00000001);
+"25
 [e ( _LM49450_write (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-[; ;LM49450.c: 38: LM49450_write(0x04, 0b00000000);
-"38
-[e ( _LM49450_write (2 , -> -> 4 `i `uc -> -> 0 `i `uc ]
-[; ;LM49450.c: 40: LM49450_write(0x02, 0x44);
-"40
+[; ;LM49450.c: 26: LM49450_write(0x02, 0x44);
+"26
 [e ( _LM49450_write (2 , -> -> 2 `i `uc -> -> 68 `i `uc ]
-[; ;LM49450.c: 41: LM49450_write(0x03, 0b00000010);
-"41
+[; ;LM49450.c: 27: LM49450_write(0x03, 0b00000010);
+"27
 [e ( _LM49450_write (2 , -> -> 3 `i `uc -> -> 2 `i `uc ]
-[; ;LM49450.c: 43: return reg0_DC;
-"43
+[; ;LM49450.c: 28: LM49450_write(0x04, 0b00000000);
+"28
+[e ( _LM49450_write (2 , -> -> 4 `i `uc -> -> 0 `i `uc ]
+[; ;LM49450.c: 30: return reg0_DC;
+"30
 [e ) _reg0_DC ]
 [e $UE 870  ]
-[; ;LM49450.c: 44: }
-"44
+[; ;LM49450.c: 31: }
+"31
 [e :UE 870 ]
 }
-"46
+"33
 [v _LM49450_Wii_init `(uc ~T0 @X0 1 ef ]
 {
-[; ;LM49450.c: 46: uint8_t LM49450_Wii_init() {
+[; ;LM49450.c: 33: uint8_t LM49450_Wii_init() {
 [e :U _LM49450_Wii_init ]
 [f ]
-"51
+"34
 [v _reg0_Wii `uc ~T0 @X0 1 a ]
-[; ;LM49450.c: 51: uint8_t reg0_Wii = 0b00101001;
+[; ;LM49450.c: 34: uint8_t reg0_Wii = 0b00101001;
 [e = _reg0_Wii -> -> 41 `i `uc ]
-[; ;LM49450.c: 52: LM49450_write(0x00, reg0_Wii);
-"52
+[; ;LM49450.c: 35: LM49450_write(0x00, reg0_Wii);
+"35
 [e ( _LM49450_write (2 , -> -> 0 `i `uc _reg0_Wii ]
-[; ;LM49450.c: 55: LM49450_write(0x01, 0b00000001);
-"55
+[; ;LM49450.c: 36: LM49450_write(0x01, 0b00000001);
+"36
 [e ( _LM49450_write (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-[; ;LM49450.c: 56: LM49450_write(0x02, 0x4B);
-"56
+[; ;LM49450.c: 37: LM49450_write(0x02, 0x4B);
+"37
 [e ( _LM49450_write (2 , -> -> 2 `i `uc -> -> 75 `i `uc ]
-[; ;LM49450.c: 61: LM49450_write(0x03, 0b01110001);
-"61
+[; ;LM49450.c: 38: LM49450_write(0x03, 0b01110001);
+"38
 [e ( _LM49450_write (2 , -> -> 3 `i `uc -> -> 113 `i `uc ]
-[; ;LM49450.c: 63: LM49450_write(0x04, 0b00000000);
-"63
+[; ;LM49450.c: 39: LM49450_write(0x04, 0b00000000);
+"39
 [e ( _LM49450_write (2 , -> -> 4 `i `uc -> -> 0 `i `uc ]
-[; ;LM49450.c: 65: return reg0_Wii;
-"65
+[; ;LM49450.c: 41: return reg0_Wii;
+"41
 [e ) _reg0_Wii ]
 [e $UE 871  ]
-[; ;LM49450.c: 66: }
-"66
+[; ;LM49450.c: 42: }
+"42
 [e :UE 871 ]
 }
-"68
+"44
 [v _LM49450_PS2_init `(uc ~T0 @X0 1 ef ]
 {
-[; ;LM49450.c: 68: uint8_t LM49450_PS2_init() {
+[; ;LM49450.c: 44: uint8_t LM49450_PS2_init() {
 [e :U _LM49450_PS2_init ]
 [f ]
-"73
+"45
 [v _reg0_PS2 `uc ~T0 @X0 1 a ]
-[; ;LM49450.c: 73: uint8_t reg0_PS2 = 0b00101001;
+[; ;LM49450.c: 45: uint8_t reg0_PS2 = 0b00101001;
 [e = _reg0_PS2 -> -> 41 `i `uc ]
-[; ;LM49450.c: 74: LM49450_write(0x00, reg0_PS2);
-"74
+[; ;LM49450.c: 46: LM49450_write(0x00, reg0_PS2);
+"46
 [e ( _LM49450_write (2 , -> -> 0 `i `uc _reg0_PS2 ]
-[; ;LM49450.c: 77: LM49450_write(0x01, 0b00000010);
-"77
+[; ;LM49450.c: 47: LM49450_write(0x01, 0b00000010);
+"47
 [e ( _LM49450_write (2 , -> -> 1 `i `uc -> -> 2 `i `uc ]
-[; ;LM49450.c: 79: LM49450_write(0x02, 0x4B);
-"79
+[; ;LM49450.c: 48: LM49450_write(0x02, 0x4B);
+"48
 [e ( _LM49450_write (2 , -> -> 2 `i `uc -> -> 75 `i `uc ]
-[; ;LM49450.c: 83: LM49450_write(0x03, 0b01110000);
-"83
+[; ;LM49450.c: 49: LM49450_write(0x03, 0b01110000);
+"49
 [e ( _LM49450_write (2 , -> -> 3 `i `uc -> -> 112 `i `uc ]
-[; ;LM49450.c: 85: LM49450_write(0x04, 0b00000000);
-"85
+[; ;LM49450.c: 50: LM49450_write(0x04, 0b00000000);
+"50
 [e ( _LM49450_write (2 , -> -> 4 `i `uc -> -> 0 `i `uc ]
-[; ;LM49450.c: 87: return reg0_PS2;
-"87
+[; ;LM49450.c: 52: return reg0_PS2;
+"52
 [e ) _reg0_PS2 ]
 [e $UE 872  ]
-[; ;LM49450.c: 88: }
-"88
+[; ;LM49450.c: 53: }
+"53
 [e :UE 872 ]
 }
-"90
+"55
 [v _LM49450_analog_init `(uc ~T0 @X0 1 ef ]
 {
-[; ;LM49450.c: 90: uint8_t LM49450_analog_init() {
+[; ;LM49450.c: 55: uint8_t LM49450_analog_init() {
 [e :U _LM49450_analog_init ]
 [f ]
-"96
+"56
 [v _reg0_analog `uc ~T0 @X0 1 a ]
-[; ;LM49450.c: 96: uint8_t reg0_analog = 0b00101011;
+[; ;LM49450.c: 56: uint8_t reg0_analog = 0b00101011;
 [e = _reg0_analog -> -> 43 `i `uc ]
-[; ;LM49450.c: 97: LM49450_write(0x00, reg0_analog);
-"97
+[; ;LM49450.c: 57: LM49450_write(0x00, reg0_analog);
+"57
 [e ( _LM49450_write (2 , -> -> 0 `i `uc _reg0_analog ]
-[; ;LM49450.c: 99: return reg0_analog;
-"99
+[; ;LM49450.c: 59: return reg0_analog;
+"59
 [e ) _reg0_analog ]
 [e $UE 873  ]
-[; ;LM49450.c: 100: }
-"100
+[; ;LM49450.c: 60: }
+"60
 [e :UE 873 ]
 }

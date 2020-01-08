@@ -11177,6 +11177,9 @@ PPS_lock();
 I2C_Master_Init(100000);
 
 
+_delay((unsigned long)((50)*(32000000/4000.0)));
+
+
 if(RC4 && RC3) {
 mute_config = LM49450_Wii_init();
 }

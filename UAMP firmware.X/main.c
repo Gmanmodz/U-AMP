@@ -85,6 +85,9 @@ void main(void) {
     PPS_lock();
     I2C_Master_Init(100000);      
     
+    //delay before beginning I2C to make sure voltage is stable
+    __delay_ms(50);
+    
     //check jumpers and initialize audio mode
     if(dat0 && dat1) {
         mute_config = LM49450_Wii_init();

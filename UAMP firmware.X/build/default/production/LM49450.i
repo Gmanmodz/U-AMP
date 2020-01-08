@@ -11062,70 +11062,39 @@ I2C_Master_Stop();
 }
 
 uint8_t LM49450_DC_init() {
-
-# 28
 uint8_t reg0_DC = 0b00101001;
 LM49450_write(0x00, reg0_DC);
-
-
 LM49450_write(0x01, 0b00000001);
-
-# 38
-LM49450_write(0x04, 0b00000000);
-
 LM49450_write(0x02, 0x44);
 LM49450_write(0x03, 0b00000010);
+LM49450_write(0x04, 0b00000000);
 
 return reg0_DC;
 }
 
 uint8_t LM49450_Wii_init() {
-
-
-
-
 uint8_t reg0_Wii = 0b00101001;
 LM49450_write(0x00, reg0_Wii);
-
-
 LM49450_write(0x01, 0b00000001);
 LM49450_write(0x02, 0x4B);
-
-
-
-
 LM49450_write(0x03, 0b01110001);
-
 LM49450_write(0x04, 0b00000000);
 
 return reg0_Wii;
 }
 
 uint8_t LM49450_PS2_init() {
-
-
-
-
 uint8_t reg0_PS2 = 0b00101001;
 LM49450_write(0x00, reg0_PS2);
-
-
 LM49450_write(0x01, 0b00000010);
-
 LM49450_write(0x02, 0x4B);
-
-
-
 LM49450_write(0x03, 0b01110000);
-
 LM49450_write(0x04, 0b00000000);
 
 return reg0_PS2;
 }
 
 uint8_t LM49450_analog_init() {
-
-# 96
 uint8_t reg0_analog = 0b00101011;
 LM49450_write(0x00, reg0_analog);
 
