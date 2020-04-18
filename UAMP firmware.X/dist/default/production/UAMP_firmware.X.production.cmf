@@ -11,7 +11,7 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\Gunnar\AppData\Local\Temp\stf4.o
+$C:\Users\Gunnar\AppData\Local\Temp\s6f4.o
 reset_vec CODE 0 0 0 2 2
 end_init CODE 0 1C 1C 2 2
 config CONFIG 0 8007 8007 5 2
@@ -152,26 +152,26 @@ STRING 4C2-FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\UAMP_firmware.X.production.o
-1E cinit CODE >3336:C:\Users\Gunnar\AppData\Local\Temp\stf4.s
-1E cinit CODE >3339:C:\Users\Gunnar\AppData\Local\Temp\stf4.s
-1E cinit CODE >3407:C:\Users\Gunnar\AppData\Local\Temp\stf4.s
-21 cinit CODE >3408:C:\Users\Gunnar\AppData\Local\Temp\stf4.s
-22 cinit CODE >3409:C:\Users\Gunnar\AppData\Local\Temp\stf4.s
-25 cinit CODE >3410:C:\Users\Gunnar\AppData\Local\Temp\stf4.s
-26 cinit CODE >3411:C:\Users\Gunnar\AppData\Local\Temp\stf4.s
-29 cinit CODE >3412:C:\Users\Gunnar\AppData\Local\Temp\stf4.s
-2A cinit CODE >3413:C:\Users\Gunnar\AppData\Local\Temp\stf4.s
-2D cinit CODE >3414:C:\Users\Gunnar\AppData\Local\Temp\stf4.s
-2E cinit CODE >3431:C:\Users\Gunnar\AppData\Local\Temp\stf4.s
-2F cinit CODE >3432:C:\Users\Gunnar\AppData\Local\Temp\stf4.s
-30 cinit CODE >3433:C:\Users\Gunnar\AppData\Local\Temp\stf4.s
-31 cinit CODE >3434:C:\Users\Gunnar\AppData\Local\Temp\stf4.s
-32 cinit CODE >3435:C:\Users\Gunnar\AppData\Local\Temp\stf4.s
-33 cinit CODE >3436:C:\Users\Gunnar\AppData\Local\Temp\stf4.s
-36 cinit CODE >3442:C:\Users\Gunnar\AppData\Local\Temp\stf4.s
-36 cinit CODE >3444:C:\Users\Gunnar\AppData\Local\Temp\stf4.s
-37 cinit CODE >3445:C:\Users\Gunnar\AppData\Local\Temp\stf4.s
-38 cinit CODE >3446:C:\Users\Gunnar\AppData\Local\Temp\stf4.s
+1E cinit CODE >3336:C:\Users\Gunnar\AppData\Local\Temp\s6f4.s
+1E cinit CODE >3339:C:\Users\Gunnar\AppData\Local\Temp\s6f4.s
+1E cinit CODE >3407:C:\Users\Gunnar\AppData\Local\Temp\s6f4.s
+21 cinit CODE >3408:C:\Users\Gunnar\AppData\Local\Temp\s6f4.s
+22 cinit CODE >3409:C:\Users\Gunnar\AppData\Local\Temp\s6f4.s
+25 cinit CODE >3410:C:\Users\Gunnar\AppData\Local\Temp\s6f4.s
+26 cinit CODE >3411:C:\Users\Gunnar\AppData\Local\Temp\s6f4.s
+29 cinit CODE >3412:C:\Users\Gunnar\AppData\Local\Temp\s6f4.s
+2A cinit CODE >3413:C:\Users\Gunnar\AppData\Local\Temp\s6f4.s
+2D cinit CODE >3414:C:\Users\Gunnar\AppData\Local\Temp\s6f4.s
+2E cinit CODE >3431:C:\Users\Gunnar\AppData\Local\Temp\s6f4.s
+2F cinit CODE >3432:C:\Users\Gunnar\AppData\Local\Temp\s6f4.s
+30 cinit CODE >3433:C:\Users\Gunnar\AppData\Local\Temp\s6f4.s
+31 cinit CODE >3434:C:\Users\Gunnar\AppData\Local\Temp\s6f4.s
+32 cinit CODE >3435:C:\Users\Gunnar\AppData\Local\Temp\s6f4.s
+33 cinit CODE >3436:C:\Users\Gunnar\AppData\Local\Temp\s6f4.s
+36 cinit CODE >3442:C:\Users\Gunnar\AppData\Local\Temp\s6f4.s
+36 cinit CODE >3444:C:\Users\Gunnar\AppData\Local\Temp\s6f4.s
+37 cinit CODE >3445:C:\Users\Gunnar\AppData\Local\Temp\s6f4.s
+38 cinit CODE >3446:C:\Users\Gunnar\AppData\Local\Temp\s6f4.s
 4 intentry CODE >40:C:\Users\Gunnar\Desktop\U-AMP\UAMP firmware.X\main.c
 6 intentry CODE >42:C:\Users\Gunnar\Desktop\U-AMP\UAMP firmware.X\main.c
 B intentry CODE >43:C:\Users\Gunnar\Desktop\U-AMP\UAMP firmware.X\main.c
@@ -391,14 +391,14 @@ FF maintext CODE >122:C:\Users\Gunnar\Desktop\U-AMP\UAMP firmware.X\main.c
 31F maintext CODE >254:C:\Users\Gunnar\Desktop\U-AMP\UAMP firmware.X\main.c
 327 maintext CODE >258:C:\Users\Gunnar\Desktop\U-AMP\UAMP firmware.X\main.c
 32C maintext CODE >259:C:\Users\Gunnar\Desktop\U-AMP\UAMP firmware.X\main.c
-4AC clrtext CODE >3420:C:\Users\Gunnar\AppData\Local\Temp\stf4.s
-4AC clrtext CODE >3421:C:\Users\Gunnar\AppData\Local\Temp\stf4.s
-4AD clrtext CODE >3422:C:\Users\Gunnar\AppData\Local\Temp\stf4.s
-4AD clrtext CODE >3423:C:\Users\Gunnar\AppData\Local\Temp\stf4.s
-4AE clrtext CODE >3424:C:\Users\Gunnar\AppData\Local\Temp\stf4.s
-4AF clrtext CODE >3425:C:\Users\Gunnar\AppData\Local\Temp\stf4.s
-4B0 clrtext CODE >3426:C:\Users\Gunnar\AppData\Local\Temp\stf4.s
-4B1 clrtext CODE >3427:C:\Users\Gunnar\AppData\Local\Temp\stf4.s
+4AC clrtext CODE >3420:C:\Users\Gunnar\AppData\Local\Temp\s6f4.s
+4AC clrtext CODE >3421:C:\Users\Gunnar\AppData\Local\Temp\s6f4.s
+4AD clrtext CODE >3422:C:\Users\Gunnar\AppData\Local\Temp\s6f4.s
+4AD clrtext CODE >3423:C:\Users\Gunnar\AppData\Local\Temp\s6f4.s
+4AE clrtext CODE >3424:C:\Users\Gunnar\AppData\Local\Temp\s6f4.s
+4AF clrtext CODE >3425:C:\Users\Gunnar\AppData\Local\Temp\s6f4.s
+4B0 clrtext CODE >3426:C:\Users\Gunnar\AppData\Local\Temp\s6f4.s
+4B1 clrtext CODE >3427:C:\Users\Gunnar\AppData\Local\Temp\s6f4.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -426,22 +426,22 @@ __Hstrings 0 0 ABS 0 strings -
 _TMR1 20C 0 ABS 0 - dist/default/production\UAMP_firmware.X.production.o
 _WPUA 1F39 0 ABS 0 - dist/default/production\UAMP_firmware.X.production.o
 _WPUC 1F4F 0 ABS 0 - dist/default/production\UAMP_firmware.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\Gunnar\AppData\Local\Temp\stf4.o
+___sp 0 0 STACK 2 stack C:\Users\Gunnar\AppData\Local\Temp\s6f4.o
 _main 74 0 CODE 0 maintext dist/default/production\UAMP_firmware.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\UAMP_firmware.X.production.o
-start 38 0 CODE 0 init C:\Users\Gunnar\AppData\Local\Temp\stf4.o
+start 38 0 CODE 0 init C:\Users\Gunnar\AppData\Local\Temp\s6f4.o
 __CFG_BOREN$OFF 0 0 ABS 0 - dist/default/production\UAMP_firmware.X.production.o
 __size_of_main 0 0 ABS 0 - dist/default/production\UAMP_firmware.X.production.o
 __size_of___lldiv 0 0 ABS 0 - dist/default/production\UAMP_firmware.X.production.o
 __LidataBANK0 0 0 ABS 0 idataBANK0 -
 __Hpowerup 0 0 CODE 0 powerup -
 _LM49450_DC_init 80E 0 CODE 0 text9 dist/default/production\UAMP_firmware.X.production.o
-intlevel0 0 0 ENTRY 0 functab C:\Users\Gunnar\AppData\Local\Temp\stf4.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\Gunnar\AppData\Local\Temp\stf4.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\Gunnar\AppData\Local\Temp\stf4.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\Gunnar\AppData\Local\Temp\stf4.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\Gunnar\AppData\Local\Temp\stf4.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\Gunnar\AppData\Local\Temp\stf4.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\Gunnar\AppData\Local\Temp\s6f4.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\Gunnar\AppData\Local\Temp\s6f4.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\Gunnar\AppData\Local\Temp\s6f4.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\Gunnar\AppData\Local\Temp\s6f4.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\Gunnar\AppData\Local\Temp\s6f4.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\Gunnar\AppData\Local\Temp\s6f4.o
 wtemp0 7E 0 ABS 0 - dist/default/production\UAMP_firmware.X.production.o
 __Hfunctab 0 0 ENTRY 0 functab -
 _HPS_state 3A 0 BANK0 1 bssBANK0 dist/default/production\UAMP_firmware.X.production.o
@@ -456,8 +456,8 @@ _LM49450_write 8C2 0 CODE 0 text10 dist/default/production\UAMP_firmware.X.produ
 __Lmaintext 0 0 ABS 0 maintext -
 __CFG_FEXTOSC$OFF 0 0 ABS 0 - dist/default/production\UAMP_firmware.X.production.o
 __end_of___lldiv 71A 0 CODE 0 text16 dist/default/production\UAMP_firmware.X.production.o
-___stackhi 21EF 0 ABS 0 - C:\Users\Gunnar\AppData\Local\Temp\stf4.o
-___stacklo 202B 0 ABS 0 - C:\Users\Gunnar\AppData\Local\Temp\stf4.o
+___stackhi 21EF 0 ABS 0 - C:\Users\Gunnar\AppData\Local\Temp\s6f4.o
+___stacklo 202B 0 ABS 0 - C:\Users\Gunnar\AppData\Local\Temp\s6f4.o
 __CFG_SAFEN$OFF 0 0 ABS 0 - dist/default/production\UAMP_firmware.X.production.o
 _vol_plus_time_start 2C 0 BANK0 1 bssBANK0 dist/default/production\UAMP_firmware.X.production.o
 __size_of_LM49450_DC_init 0 0 ABS 0 - dist/default/production\UAMP_firmware.X.production.o
@@ -475,7 +475,7 @@ clear_ram0 958 0 CODE 0 clrtext dist/default/production\UAMP_firmware.X.producti
 __pcstackBANK0 3D 0 BANK0 1 cstackBANK0 dist/default/production\UAMP_firmware.X.production.o
 _TMR1IF 3880 0 ABS 0 - dist/default/production\UAMP_firmware.X.production.o
 __end_of_LM49450_PS2_init 7C4 0 CODE 0 text8 dist/default/production\UAMP_firmware.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\Gunnar\AppData\Local\Temp\stf4.o
+___int_sp 0 0 STACK 2 stack C:\Users\Gunnar\AppData\Local\Temp\s6f4.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -739,7 +739,7 @@ __Lintentry 8 0 CODE 0 intentry -
 ___lldiv@divisor 70 0 COMMON 1 cstackCOMMON dist/default/production\UAMP_firmware.X.production.o
 I2C_Master_Write@data 70 0 COMMON 1 cstackCOMMON dist/default/production\UAMP_firmware.X.production.o
 __size_of_get_time 0 0 ABS 0 - dist/default/production\UAMP_firmware.X.production.o
-reset_vec 0 0 CODE 0 reset_vec C:\Users\Gunnar\AppData\Local\Temp\stf4.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\Gunnar\AppData\Local\Temp\s6f4.o
 I2C_Master_Init@clk 3D 0 BANK0 1 cstackBANK0 dist/default/production\UAMP_firmware.X.production.o
 __pdataBANK0 47 0 BANK0 1 dataBANK0 dist/default/production\UAMP_firmware.X.production.o
 __LbssBANK0 0 0 ABS 0 bssBANK0 -

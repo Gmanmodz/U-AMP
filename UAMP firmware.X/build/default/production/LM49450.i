@@ -11088,7 +11088,7 @@ uint8_t reg0_PS2 = 0b00101001;
 LM49450_write(0x00, reg0_PS2);
 LM49450_write(0x01, 0b00000010);
 LM49450_write(0x02, 0x4B);
-LM49450_write(0x03, 0b01110000);
+LM49450_write(0x03, 0b01110010);
 LM49450_write(0x04, 0b00000000);
 
 return reg0_PS2;

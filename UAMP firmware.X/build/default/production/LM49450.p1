@@ -7315,9 +7315,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;LM49450.c: 48: LM49450_write(0x02, 0x4B);
 "48
 [e ( _LM49450_write (2 , -> -> 2 `i `uc -> -> 75 `i `uc ]
-[; ;LM49450.c: 49: LM49450_write(0x03, 0b01110000);
+[; ;LM49450.c: 49: LM49450_write(0x03, 0b01110010);
 "49
-[e ( _LM49450_write (2 , -> -> 3 `i `uc -> -> 112 `i `uc ]
+[e ( _LM49450_write (2 , -> -> 3 `i `uc -> -> 114 `i `uc ]
 [; ;LM49450.c: 50: LM49450_write(0x04, 0b00000000);
 "50
 [e ( _LM49450_write (2 , -> -> 4 `i `uc -> -> 0 `i `uc ]
